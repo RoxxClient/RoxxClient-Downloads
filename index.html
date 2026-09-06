@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Roxx Client — Minecraft Launcher for Windows & Android</title>
+  <meta name="description" content="The polished Minecraft launcher that feels finished. Instances, mods, skins & capes. Windows + Android, offline-first, Modrinth marketplace, live 3D preview." />
+  <meta property="og:title" content="Roxx Client" />
+  <meta property="og:description" content="Minecraft launcher for Windows & Android — one launcher, everywhere." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/RoxxClient/RoxxClient/main/build/icon.png" />
+  <meta name="theme-color" content="#060606" />
+  <link rel="icon" href="https://raw.githubusercontent.com/RoxxClient/RoxxClient/main/build/icon.png" />
+  <style>
+    :root{--bg:#060606;--panel:#121212;--panel-2:#181818;--border:#2c2c2c;--border-soft:#1f1f1f;--text:#f2f2f2;--muted:#9e9e9e;--accent:#3b82f6;--accent-2:#8b5cf6;--rad:14px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:radial-gradient(900px 500px at 85% -10%, rgba(59,130,246,.08), transparent 60%), var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{filter:brightness(1.15)}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:10;background:rgba(6,6,6,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-soft)}
+    .nav{display:flex;align-items:center;gap:14px;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px;color:#fff}
+    .logo img{width:36px;height:36px;border-radius:10px;box-shadow:0 6px 18px rgba(59,130,246,.25)}
+    .nav-links{margin-left:auto;display:flex;gap:18px;font-size:14px;font-weight:600}
+    .nav-links a{color:var(--muted)} .nav-links a:hover{color:#fff}
+    .hero{padding:56px 0 28px;display:grid;gap:22px}
+    .hero h1{font-size:44px;line-height:1.05;letter-spacing:-.8px;background:linear-gradient(90deg,#fff, #c7d2fe);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{color:var(--muted);font-size:17px;max-width:760px}
+    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+    .btn{appearance:none;border:1px solid var(--border);background:linear-gradient(135deg,#3b82f6,#8b5cf6 55%, #ec4899);color:#fff;font-weight:800;letter-spacing:.3px;padding:13px 18px;border-radius:12px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 10px 28px rgba(59,130,246,.25);transition:transform .12s, filter .12s}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+    .btn.ghost{background:rgba(255,255,255,.06);border-color:var(--border);box-shadow:none;color:#fff}
+    .btn small{opacity:.85;font-weight:600}
+    .badge{font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#a5b4fc;background:rgba(139,92,246,.14);border:1px solid rgba(139,92,246,.3);padding:6px 10px;border-radius:999px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0}
+    .card{background:linear-gradient(180deg, var(--panel), rgba(10,10,10,.7));border:1px solid var(--border-soft);border-radius:var(--rad);padding:18px}
+    .card h3{font-size:15px;margin-bottom:8px}
+    .card p{color:var(--muted);font-size:13.5px}
+    .card .icon{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid var(--border-soft);margin-bottom:10px}
+    .shots{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin:18px 0}
+    .shot{aspect-ratio:16/10;border-radius:14px;border:1px solid var(--border);background:linear-gradient(180deg,#101828,#05070d);display:grid;place-items:center;color:var(--muted);font-weight:700;letter-spacing:.4px}
+    .shot span{opacity:.7}
+    .specs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0 0}
+    .spec{padding:14px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--border-soft)}
+    .spec b{font-size:13px}
+    .spec div{font-size:13px;color:var(--muted)}
+    footer{margin:40px 0 30px;padding-top:18px;border-top:1px solid var(--border-soft);color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+    @media(max-width:900px){.hero h1{font-size:34px}.grid{grid-template-columns:1fr 1fr}.shots{grid-template-columns:1fr}}
+    @media(max-width:600px){.grid{grid-template-columns:1fr}.cta{flex-direction:column}.btn{width:100%;justify-content:center}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#"><img src="https://raw.githubusercontent.com/RoxxClient/RoxxClient/main/build/icon.png" alt="" /> Roxx Client</a>
+      <nav class="nav-links">
+        <a href="#download">Download</a>
+        <a href="#features">Features</a>
+        <a href="https://github.com/RoxxClient/RoxxClient">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="badge">✨ Now with embedded Android engine — one APK, one icon</span>
+      <h1>The Minecraft launcher<br/>that feels finished.</h1>
+      <p>Instances, Modrinth mods & packs, skins with live 3D preview, capes, logs — <b style="color:#fff">Windows + Android</b> from the same codebase. Offline-first, fast, and actually polished.</p>
+      <div class="cta" id="download">
+        <a class="btn" href="https://github.com/RoxxClient/RoxxClient/releases/latest/download/Roxx.Client.Setup.1.0.0.exe">⬇ Download for Windows <small>· .exe · x64</small></a>
+        <a class="btn ghost" href="https://github.com/RoxxClient/RoxxClient/releases/latest/download/Roxx.Client.apk">⬇ Download for Android <small>· .apk · 137 MB</small></a>
+        <a class="btn ghost" href="https://github.com/RoxxClient/RoxxClient/releases">All releases →</a>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <img alt="Release" src="https://img.shields.io/github/v/release/RoxxClient/RoxxClient?label=latest&color=3b82f6" />
+        <img alt="Downloads" src="https://img.shields.io/github/downloads/RoxxClient/RoxxClient/total?color=8b5cf6" />
+        <img alt="License" src="https://img.shields.io/badge/license-MIT-green" />
+      </div>
+    </section>
+
+    <section class="shots">
+      <div class="shot"><span>Launcher — Play & Instances (add real screenshot)</span></div>
+      <div class="shot"><span>Skin 3D Preview (add real screenshot)</span></div>
+    </section>
+
+    <section id="features" class="grid">
+      <div class="card"><div class="icon">📦</div><h3>Instances</h3><p>Isolated game dirs, versions, loaders (Vanilla / Fabric / Quilt), RAM controls.</p></div>
+      <div class="card"><div class="icon">🧩</div><h3>Mods & Packs</h3><p>Modrinth search with dependency resolution, `.mrpack` override support, per-instance storage.</p></div>
+      <div class="card"><div class="icon">🎨</div><h3>Skins & Capes</h3><p>2D paperdoll + full 3D Three.js preview, slim/classic, 25 bundled capes, upload & username lookup.</p></div>
+      <div class="card"><div class="icon">⚡</div><h3>Fast & Offline</h3><p>No login required, `offlineUuid` + jar patching + CustomSkinLoader staging for in-game skins.</p></div>
+      <div class="card"><div class="icon">📱</div><h3>Android, real</h3><p>Merged Amethyst engine — one APK, one icon. Vanilla/Fabric/Quilt in-process, no separate launcher.</p></div>
+      <div class="card"><div class="icon">🛡️</div><h3>Safe installs</h3><p>Path traversal guards, zip-slip checks, MediaStore exports on Android 10+.</p></div>
+    </section>
+
+    <section class="grid" style="margin-top:10px">
+      <div class="card"><h3>Windows</h3><div class="spec"><b>OS</b><div>Windows 10/11 x64</div></div><div class="spec"><b>Runtime</b><div>Auto-downloaded (Adoptium) per MC version</div></div></div>
+      <div class="card"><h3>Android</h3><div class="spec"><b>OS</b><div>Android 7.0+ (API 24+), 4 GB RAM recommended</div></div><div class="spec"><b>First launch</b><div>Downloads game + Java 25 arm64 (~40 MB) on WiFi</div></div></div>
+      <div class="card"><h3>Build it</h3><div style="font-family:ui-monospace,monospace;font-size:12.5px;background:rgba(255,255,255,.06);border:1px solid var(--border);padding:10px;border-radius:10px;overflow:auto">npm install<br/>npm run build && npm run dist<br/>gradle -p android assembleDebug</div></div>
+    </section>
+
+    <section style="margin:22px 0" class="card">
+      <h3>FAQ</h3>
+      <p><b>My cape doesn't show in-game?</b> — Capes need Fabric or Quilt. Vanilla can't render capes offline — the launcher tells you this in the log.</p>
+      <p style="margin-top:8px"><b>Black skin in catalog?</b> — Dark skins are drawn with a subtle halo so they don't vanish on the dark card.</p>
+      <p style="margin-top:8px"><b>Emulator won't boot?</b> — Install the Android Emulator Hypervisor Driver in SDK Manager and enable Windows Hypervisor Platform, then reboot.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© Roxx Client — MIT · Not affiliated with Mojang or Microsoft.</span>
+    <span><a href="https://github.com/RoxxClient/RoxxClient">GitHub</a> · <a href="https://github.com/RoxxClient/RoxxClient/issues">Issues</a> · <a href="https://github.com/RoxxClient/RoxxClient/releases">Releases</a></span>
+  </footer>
+</body>
+</html>
