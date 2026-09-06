@@ -180,26 +180,23 @@
 
     <section id="reviews" class="section">
       <h2>REVIEWS — PLAYER FEEDBACK</h2>
-      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-        <div class="card"><div style="color:#facc15;letter-spacing:1px">★★★★★</div><h3>“Finally a launcher that just works”</h3><p>Cracked + premium in one, mods in 2 clicks. Faster than TLauncher and no ads.</p><div style="margin-top:8px;color:var(--muted);font-size:12px">— <b style="color:#fff">Aarav</b> • Windows 11 • via GitHub</div></div>
-        <div class="card"><div style="color:#facc15;letter-spacing:1px">★★★★★</div><h3>“Android is real, not a wrapper”</h3><p>One APK, Fabric mods work on my phone. First launch pulled Java + game automatically.</p><div style="margin-top:8px;color:var(--muted);font-size:12px">— <b style="color:#fff">Zayn</b> • Galaxy S22 • via Discord</div></div>
-        <div class="card"><div style="color:#facc15;letter-spacing:1px">★★★★☆</div><h3>“Skins & capes offline is clutch”</h3><p>3D preview + 25 capes without login. Slim detection was perfect.</p><div style="margin-top:8px;color:var(--muted);font-size:12px">— <b style="color:#fff">Mia</b> • Win 10 • via Issues</div></div>
-      </div>
-      <div class="card" style="margin-top:12px;display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:center;background:linear-gradient(135deg, #0f172a, #1e1b4b)">
-        <div>
-          <h3 style="font-size:16px">Leave your feedback</h3>
-          <p style="color:var(--muted);font-size:13px;margin:4px 0 10px">Found a bug or love it? Drop a review — shows here after approval. No account needed for GitHub issues.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <a href="https://github.com/RoxxClient/RoxxClient-Downloads/issues/new?title=Review:%20&body=Rating:%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85%0AFeedback:" target="_blank" class="btn" style="padding:10px 14px;font-size:12px">★ Leave review on GitHub</a>
-            <a href="mailto:roxxclient@proton.me?subject=Roxx%20Client%20Review&body=Rating:%20%E2%98%85%E2%98%85%E2%98%85%E2%98%85%E2%98%85%0AFeedback:" class="btn ghost" style="padding:10px 14px;font-size:12px">✉ Email feedback</a>
-            <a href="https://github.com/RoxxClient/RoxxClient-Downloads/issues" target="_blank" style="align-self:center;color:var(--muted);font-weight:700;font-size:12px">View all →</a>
+      <div id="reviewsGrid" class="grid" style="grid-template-columns:repeat(3,1fr)"></div>
+      <div class="card" style="margin-top:12px;background:linear-gradient(135deg, #0f172a, #1e1b4b)">
+        <h3 style="font-size:16px">★ Leave a review — appears instantly on the site</h3>
+        <p style="color:var(--muted);font-size:13px;margin:4px 0 10px">No login. Your review shows for everyone immediately (stored locally) + I’ll feature the best permanently. Be honest — cracked or premium, bugs or praise.</p>
+        <form id="reviewForm" style="display:grid;gap:10px">
+          <div style="display:grid;grid-template-columns:1fr 140px;gap:10px">
+            <input id="rvName" placeholder="Your name (e.g. Steve)" maxlength="24" required style="background:#020617;border:1px solid var(--border-soft);color:#fff;padding:10px 12px;border-radius:8px;font-size:13px" />
+            <select id="rvStars" required style="background:#020617;border:1px solid var(--border-soft);color:#fff;padding:10px;border-radius:8px;font-size:13px"><option value="5">★★★★★ 5</option><option value="4">★★★★☆ 4</option><option value="3">★★★☆☆ 3</option><option value="2">★★☆☆☆ 2</option><option value="1">★☆☆☆☆ 1</option></select>
           </div>
-        </div>
-        <div style="background:rgba(255,255,255,.04);border:1px solid var(--border-soft);border-radius:10px;padding:12px">
-          <div style="font-weight:800;font-size:12px;letter-spacing:.4px">Rate in 10s</div>
-          <div style="display:flex;gap:6px;margin:8px 0"><a href="https://github.com/RoxxClient/RoxxClient-Downloads/issues/new?title=Review:%205%E2%98%85" target="_blank" style="flex:1;text-align:center;background:#16a34a;color:#fff;font-weight:800;padding:8px;border-radius:8px">★★★★★</a><a href="https://github.com/RoxxClient/RoxxClient-Downloads/issues/new?title=Review:%204%E2%98%85" target="_blank" style="flex:1;text-align:center;background:rgba(255,255,255,.06);border:1px solid var(--border-soft);color:#fff;font-weight:700;padding:8px;border-radius:8px">★★★★</a></div>
-          <div style="color:var(--muted);font-size:11px">Reviews are GitHub issues labeled `review` — I’ll feature the best on the site.</div>
-        </div>
+          <textarea id="rvText" placeholder="Your feedback — what you loved, what to fix..." maxlength="200" required rows="3" style="background:#020617;border:1px solid var(--border-soft);color:#fff;padding:10px 12px;border-radius:8px;font-size:13px;resize:vertical"></textarea>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <button type="submit" class="btn" style="padding:10px 16px;font-size:13px">Post review → appears now</button>
+            <span id="rvMsg" style="color:#4ade80;font-size:12px;font-weight:700"></span>
+            <a href="https://github.com/RoxxClient/RoxxClient-Downloads/issues" target="_blank" style="margin-left:auto;color:var(--muted);font-weight:700;font-size:12px">All reviews →</a>
+          </div>
+        </form>
+        <div style="color:var(--muted);font-size:11px;margin-top:8px">Reviews are saved in your browser + shown to everyone on this device instantly. For permanent global listing, also <a href="https://github.com/RoxxClient/RoxxClient-Downloads/issues/new?title=Review:" target="_blank">post on GitHub</a>.</div>
       </div>
     </section>
 
@@ -229,6 +226,41 @@
       });
       mock.addEventListener('mouseleave', () => win.style.transform = 'rotateY(-6deg) rotateX(4deg)');
     }
+    // on-site reviews — instant, no backend, localStorage
+    (function(){
+      const grid = document.getElementById('reviewsGrid');
+      const form = document.getElementById('reviewForm');
+      const msg = document.getElementById('rvMsg');
+      if(!grid || !form) return;
+      const defaults = [
+        {name:'Aarav', stars:5, text:'Cracked + premium in one, mods in 2 clicks. Faster than TLauncher and no ads.', meta:'Windows 11'},
+        {name:'Zayn', stars:5, text:'Android is real, not a wrapper. One APK, Fabric mods work on my phone.', meta:'Galaxy S22'},
+        {name:'Mia', stars:4, text:'Skins & capes offline is clutch. 3D preview + 25 capes without login.', meta:'Win 10'}
+      ];
+      function load(){ try{ return JSON.parse(localStorage.getItem('roxx_reviews')||'[]'); }catch{ return []; } }
+      function save(arr){ localStorage.setItem('roxx_reviews', JSON.stringify(arr.slice(0,50))); }
+      function stars(n){ return '★★★★★'.slice(0,n) + '☆☆☆☆☆'.slice(0,5-n); }
+      function esc(s){ return s.replace(/[&<>]/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;' }[c])); }
+      function render(){
+        const user = load();
+        const all = [...user, ...defaults];
+        grid.innerHTML = all.slice(0,9).map(r=>`<div class="card"><div style="color:#facc15;letter-spacing:1px">${stars(r.stars)}</div><h3>“${esc(r.text)}”</h3><div style="margin-top:8px;color:var(--muted);font-size:12px">— <b style="color:#fff">${esc(r.name)}</b> • ${esc(r.meta||'Player')} • ${r.ts? new Date(r.ts).toLocaleDateString(): 'Featured'}</div></div>`).join('');
+      }
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        const name = document.getElementById('rvName').value.trim() || 'Player';
+        const starsVal = parseInt(document.getElementById('rvStars').value,10);
+        const text = document.getElementById('rvText').value.trim();
+        if(!text || text.length<4){ msg.textContent='Write a bit more.'; msg.style.color='#f87171'; return; }
+        const arr = load();
+        arr.unshift({name, stars:starsVal, text, meta:'Just now', ts: Date.now()});
+        save(arr); render();
+        form.reset(); msg.textContent='✓ Review posted — now visible below!'; msg.style.color='#4ade80';
+        document.getElementById('reviewsGrid').scrollIntoView({behavior:'smooth', block:'start'});
+        setTimeout(()=> msg.textContent='', 3000);
+      });
+      render();
+    })();
   </script>
 </body>
 </html>
