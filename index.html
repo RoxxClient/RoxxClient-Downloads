@@ -232,11 +232,7 @@
       const form = document.getElementById('reviewForm');
       const msg = document.getElementById('rvMsg');
       if(!grid || !form) return;
-      const defaults = [
-        {name:'Aarav', stars:5, text:'Cracked + premium in one, mods in 2 clicks. Faster than TLauncher and no ads.', meta:'Windows 11'},
-        {name:'Zayn', stars:5, text:'Android is real, not a wrapper. One APK, Fabric mods work on my phone.', meta:'Galaxy S22'},
-        {name:'Mia', stars:4, text:'Skins & capes offline is clutch. 3D preview + 25 capes without login.', meta:'Win 10'}
-      ];
+      const defaults = [];
       function load(){ try{ return JSON.parse(localStorage.getItem('roxx_reviews')||'[]'); }catch{ return []; } }
       function save(arr){ localStorage.setItem('roxx_reviews', JSON.stringify(arr.slice(0,50))); }
       function stars(n){ return '★★★★★'.slice(0,n) + '☆☆☆☆☆'.slice(0,5-n); }
@@ -244,6 +240,7 @@
       function render(){
         const user = load();
         const all = [...user, ...defaults];
+        if(all.length===0){ grid.innerHTML = `<div class="card" style="grid-column:1/-1;text-align:center;padding:24px"><h3 style="color:var(--muted)">No reviews yet — be the first ★</h3><p style="color:var(--muted);font-size:13px;margin-top:4px">Your honest feedback will appear here instantly.</p></div>`; return; }
         grid.innerHTML = all.slice(0,9).map(r=>`<div class="card"><div style="color:#facc15;letter-spacing:1px">${stars(r.stars)}</div><h3>“${esc(r.text)}”</h3><div style="margin-top:8px;color:var(--muted);font-size:12px">— <b style="color:#fff">${esc(r.name)}</b> • ${esc(r.meta||'Player')} • ${r.ts? new Date(r.ts).toLocaleDateString(): 'Featured'}</div></div>`).join('');
       }
       form.addEventListener('submit', e=>{
