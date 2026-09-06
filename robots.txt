@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://roxxclient.github.io/RoxxClient-Downloads/sitemap.xml
